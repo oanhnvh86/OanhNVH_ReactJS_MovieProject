@@ -7,18 +7,26 @@ import { Radio, Space, Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 
 
-
 // const changeTabPosition = (e: RadioChangeEvent) => {
 //   setTabPosition(e.target.value);
 // };
 
 
 function HomeTabs(props) {
-
   console.log("HomeTab",props);
 
   type TabPosition = 'left' | 'right' | 'top' | 'bottom';
   const [tabPosition, setTabPosition] = useState<TabPosition>('left');
+
+  const {heThongRapChieu} = props;
+  const logo = heThongRapChieu.logo
+  console.log("heThongRapChieu:", logo)
+
+  // const renderHeThongRap = () =>{
+  //   return heThongRapChieu.map((heThongRap, index) => {
+
+  //   })
+  // }
 
   return (
     <>
@@ -31,7 +39,8 @@ function HomeTabs(props) {
         <Radio.Button value="right">right</Radio.Button>
       </Radio.Group>
     </Space> */}
-    <Tabs
+
+    {/* <Tabs
       tabPosition={tabPosition}
       items={new Array(3).fill(null).map((_, i) => {
         const id = String(i + 1);
@@ -41,7 +50,20 @@ function HomeTabs(props) {
           children: `Content of Tab ${id}`,
         };
       })}
+    /> */}
+
+<Tabs
+      tabPosition={tabPosition}
+      items={new Array(6).fill(null).map((_, i) => {
+        const id = String(i + 1);
+        return {
+          label: `<img src = ${heThongRapChieu.logo} width="50" />`,
+          key: id,
+          children: `${heThongRapChieu.maHeThongRap}`,
+        };
+      })}
     />
+
 {/* 
     <Tabs tabPosition ={tabPosition}>
       <TabPane tab={<img scr="https://picsum.photos/200" className='rounded' />} key="1">

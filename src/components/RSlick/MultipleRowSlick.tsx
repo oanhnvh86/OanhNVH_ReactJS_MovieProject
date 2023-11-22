@@ -48,19 +48,19 @@ const MultipleRows = (props) => {
   const renderFilms = () => {
     // console.log("arrPhim hehe:", this.props.arrFilms);
     //C1
-    return props.arrFilms.map((item, index) => {
-      return (
-        <div key={index} className={`${styleSlick['width-item']}`} >
-          <CardMovie film ={item}   />
-        </div>
-      );
-    //C2
     // return props.arrFilms.map((item, index) => {
     //   return (
-    //     <div key={index} className="mt-2">
-    //       <FilmFlip film={item} />
+    //     <div key={index} className={`${styleSlick['width-item']}`} >
+    //       <CardMovie film ={item}   />
     //     </div>
     //   );
+    //C2
+    return props.arrFilms.map((item, index) => {
+      return (
+        <div key={index} className="mt-2">
+          <FilmFlip film={item} />
+        </div>
+      );
     });
   };
 

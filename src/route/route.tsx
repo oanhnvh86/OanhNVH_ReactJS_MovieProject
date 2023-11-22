@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import Detail from "../pages/detail/detail";
+import Detail from "../pages/detail/Detail";
 import Booking from "../pages/booking/booking";
 import Login from "../pages/login/login";
 import Register from "../pages/register/register";
@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
             }    
             ,
             {
-                path: "detail",
+                path: "detail/:id",
                 element: <Detail />,
             },
             {

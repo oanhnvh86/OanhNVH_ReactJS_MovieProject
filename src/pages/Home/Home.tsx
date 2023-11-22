@@ -10,12 +10,15 @@ import CardList from "../../components/list-card/cardList";
 import { useDispatch, useSelector } from "react-redux";
 import MultipleRows from "../../components/RSlick/MultipleRowSlick";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimAction";
+import { layDanhSachHeThongRapAction } from "../../redux/actions/QuanLyRapAction";
 
 function Home(props) {
-  //1. Get list films from redux via QuanLyPhimReducer
+  //1. Get list arrFilms from redux via QuanLyPhimReducer & heThongRapChieu via QuanLyRapReducer
   console.log("propsHome: ", props);
   const { arrFilms } = useSelector((state) => state.QuanLyPhimReducer);
   console.log("propsHome arrFilms: ", arrFilms);
+
+  const { heThongRapChieu } = useSelector((state) => state.QuanLyRapReducer);
 
   //2. Render list fimls above
   // const renderFilms = () => {
@@ -85,13 +88,15 @@ function Home(props) {
   //   });
   // };
 
-  // const {heThongRapChieu} = useSelector(state => state.QuanLyRapReducer);
   
+  //2. Đưa  dữ liệu của API lên redux
   const dispatch = useDispatch()
   useEffect(()=>{
     const action = layDanhSachPhimAction();
     dispatch(action);//dispatch function từ thunk
-  })
+
+    dispatch(layDanhSachHeThongRapAction());
+  },[])
 
   return (
     <div style={{ width: "80%", margin: "auto" }}>
@@ -113,7 +118,7 @@ function Home(props) {
 
       {/*2. Tab Content  */}
       <div className="mt-5">
-        <HomeTabs />
+        <HomeTabs heThongRapChieu = {heThongRapChieu} />
       </div>
     </div>
   );

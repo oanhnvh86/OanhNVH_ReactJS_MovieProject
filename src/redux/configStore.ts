@@ -26,7 +26,7 @@ const rootReducer = combineReducers({
   
     CarouselReducer,
     QuanLyPhimReducer,
-    // QuanLyRapReducer,
+    QuanLyRapReducer,
   
 });
 
